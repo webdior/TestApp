@@ -1,0 +1,85 @@
+﻿@model  TestApiApp.Models.RequestModels
+
+@{
+    ViewBag.Title = "RequestData";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Input Data</h2>
+<script src="~/Scripts/jquery-1.8.2.intellisense.js"></script>
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#btn_submit").click(function () {
+
+            var uid = $("#uid").val();
+            var xpos = $("#xpos").val();
+            var ypos = $("#ypos").val();
+            var orientation = $("#orientation").val();
+            var type = $("#type").val();
+
+            $.ajax({
+                type: "Post",
+                url: '@Url.Action("mongod" , "Home")',
+
+                dataType: 'json',
+                data: { Uid: uid, Xpos: xpos, Ypos: ypos, Orientation: orientation, Type: type },
+
+                success: function (data) {
+                    $("#uid").val("");
+                    $("#xpos").val("");
+                    $("#ypos").val("");
+                    $("#orientation").val("");
+                    $("#type").val("");
+                    alert("Data Saved");
+
+                },
+
+                error: function (xhr, status, error) {
+                    alert("Sorry Data can't be saved");
+                }
+
+            });
+
+        });
+
+    });
+
+</script>
+
+
+@Html.ValidationSummary(true)
+<div>
+    @Html.Label("User Id")
+    @Html.TextBoxFor(model => model.uid, "uid")
+</div>
+<div>
+
+    @Html.Label("x-Position")
+    @Html.TextBoxFor(model => model.xpos, "xpos")
+</div>
+<div>
+
+    @Html.Label("y-position")
+    @Html.TextBoxFor(model => model.ypos, "ypos")
+</div>
+<div>
+    @Html.Label("Orientation")
+    @Html.TextBoxFor(model => model.orientation, "orientation")
+</div>
+<div>
+    @Html.Label("Type")
+    @Html.TextBoxFor(model => model.type, "type")
+</div>
+
+<div>
+    <input type="submit" value="Submit" id="btn_submit" />
+</div>
+
+
+
