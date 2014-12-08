@@ -10,6 +10,7 @@ namespace TestApiApp.Controllers
     {
         public ActionResult Index()
         {
+            
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
 
             return View();
@@ -34,10 +35,15 @@ namespace TestApiApp.Controllers
         {
             try
             {
+                if(Session["user"] != null)
+                { 
+                string user = Session["user"].ToString();
+                string pwd = Session["pwd"].ToString();
 
                 string timestamp = Convert.ToString(DateTime.Now);
-                mrmodel.adddata(Uid, Xpos, Ypos, Orientation, Type, timestamp);
-
+                mrmodel.adddata(user , pwd, Uid, Xpos, Ypos, Orientation, Type, timestamp);
+                }
+                
                 return Json(mrmodel);
             }
             catch (HttpException ex)
@@ -49,11 +55,25 @@ namespace TestApiApp.Controllers
                 throw new Exception(ex.Message);
             }
         }
-        [HttpGet]
-        public ActionResult RequestData()
-        {
+       
 
+        [HttpGet]
+        public ActionResult RequestData(bool sendFlag)
+        {
+            if(sendFlag)
+            {
+                ViewBag.data = "true";
             return View();
+            }
+            else
+            {
+                return View("Index");
+            }
         }
+
+      
+
+        
     }
+
 }
