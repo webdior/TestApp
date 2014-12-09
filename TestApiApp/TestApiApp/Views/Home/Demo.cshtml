@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Demo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <title>Demo Video</title>
+   
+    <!-- Load player theme -->
+    <link rel="stylesheet" href="~/projector/themes/maccaco/projekktor.style.css" type="text/css" media="screen" />
+    <!-- Load jquery -->
+    <script type="text/javascript" src="~/projector/jquery-1.9.1.min.js"></script>
+    <!-- load projekktor -->
+    <script type="text/javascript" src="~/projector/projekktor-1.3.09.min.js"></script>
+  
+
+</head>
+<h2>Demo Video </h2>
+
+
+<div>
+    <video controls="controls" style="width:450px;border:solid black 2px;" >
+        <source src="~/Video/assets/Cole_Animation_3_1_Sideways.mp4" type="video/mp4" />
+    </video>
+    <video controls="controls" style="width:450px;border:solid black 2px;">
+        <source src="~/Video/assets/Cole_Animation_3_1_default.mp4" type="video/mp4" />
+    </video>
+</div>
+
+
+

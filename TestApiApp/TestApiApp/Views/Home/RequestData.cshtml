@@ -22,7 +22,7 @@
             var ypos = $("#ypos").val();
             var orientation = $("#orientation").val();
             var type = $("#type").val();
-
+            
             $.ajax({
                 type: "Post",
                 url: '@Url.Action("mongod" , "Home")',
@@ -55,6 +55,8 @@
 
 @Html.ValidationSummary(true)
 <div>
+    
+
     @Html.Label("User Id")
     @Html.TextBoxFor(model => model.uid, "uid")
 </div>
@@ -78,7 +80,7 @@
 </div>
 
 <div>
-    <input type="submit" value="Submit" id="btn_submit" />
+    <input type="submit" value="Submit" id="btn_submit"  />
 </div>
 
 

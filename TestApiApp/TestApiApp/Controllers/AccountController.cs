@@ -37,7 +37,17 @@ namespace TestApiApp.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
+                if((model.UserName == "dev")&&(model.Password == "123456"))
+                {
+                    Session["user"] = model.UserName;
+                    Session["pwd"] = model.Password;
+                    returnUrl = "RequestData";
                 return RedirectToLocal(returnUrl);
+                }
+                else
+                {
+                    return RedirectToLocal(returnUrl);
+                }
             }
 
             // If we got this far, something failed, redisplay form
@@ -331,13 +341,22 @@ namespace TestApiApp.Controllers
         #region Helpers
         private ActionResult RedirectToLocal(string returnUrl)
         {
+            
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                if (returnUrl == "RequestData")
+                {
+                    ViewBag.data = "True";
+                    return RedirectToAction("RequestData", "Home", new { sendFlag = "true" });
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }//return RedirectToAction("Index", "Home");
             }
         }
 

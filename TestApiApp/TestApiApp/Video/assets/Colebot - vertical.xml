@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<colebot>
+	<music>Someday.mp3</music>
+	<video>Cole_Animation_3_1_default.mp4</video>
+	<!--<video>http://speed.pointroll.com/PointRoll/Media/Asset/PointRollTreat/182448/Cole_Animation_3_1_default.mp4</video>-->
+	<piecesPerMinute>100</piecesPerMinute>
+	<conveyorSpeed>108</conveyorSpeed>
+	<conveyorDirection>down</conveyorDirection>
+	<box id='0' name='Waste'>Waste.png</box>
+	<box id='1' name='Glass'>Glass.png</box>
+	<box id='2' name='Food'>Food.png</box>
+	<box id='3' name='Plastic'>Plastic.png</box>
+	<box id='4' name='Aluminum'>Aluminum.png</box>
+	<box id='5' name='Tin'>Tin.png</box>
+</colebot>
